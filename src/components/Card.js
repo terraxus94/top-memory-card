@@ -6,9 +6,8 @@ function Card(prop) {
   };
 
   return (
-    <div className="card" onClick={() => clickHandler} id={prop.name}>
-      <p>Test</p>
-      <img src={require('../images/' + prop.name)} alt="jesus" />
+    <div className="card" id={prop.name}>
+      <img src={prop.path} alt="jesus" onClick={() => clickHandler()} />
     </div>
   );
 }

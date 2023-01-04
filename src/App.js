@@ -1,10 +1,18 @@
 import Card from './components/Card';
+import imagesIndex from './images/imagesIndex';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <Card name="img2.jpg" />
+    <div className="main-container">
+      <div className="app">
+        <div className="cards-container">
+          {Object.keys(imagesIndex).map((key) => {
+            return <Card name={key} path={imagesIndex[key]} />;
+          })}
+        </div>
+        <div className="scoreboard"></div>
+      </div>
     </div>
   );
 }
