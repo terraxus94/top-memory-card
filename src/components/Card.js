@@ -1,14 +1,20 @@
 import React from 'react';
+import { useId } from 'react-id-generator';
 
 function Card(prop) {
-  const clickHandler = () => {
+  const clickHandler = (event) => {
     console.log('first');
   };
+  const [htmlId] = useId();
 
   return (
-    <div className="card" id={prop.name}>
-      <img src={prop.path} alt="jesus" onClick={() => clickHandler()} />
-    </div>
+    <img
+      className="card"
+      src={prop.path}
+      alt={prop.name}
+      id={htmlId}
+      onClick={(e) => clickHandler(e)}
+    />
   );
 }
 

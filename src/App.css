@@ -6,8 +6,7 @@ display: flex;
 }
 
 .app {
-  
-  width: 700px;
+  width: 705px;
 }
 
 .cards-container {
@@ -20,4 +19,9 @@ display: flex;
 .card {
   height: 165px;
   width: 165px
+}
+
+.text-class {
+  font-family: monospace;
+  padding-bottom: 10px;
 }

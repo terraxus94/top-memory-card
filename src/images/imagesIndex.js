@@ -9,6 +9,12 @@ const imagesIndex = {
   img8: require('./img8.jpg'),
   img9: require('./img9.jpg'),
   img10: require('./img10.jpg'),
+  img11: require('./img11.jpg'),
+  img12: require('./img12.jpg'),
+  img13: require('./img13.jpg'),
+  img14: require('./img14.jpg'),
+  img15: require('./img15.jpg'),
+  img16: require('./img16.jpg'),
 };
 
 export default imagesIndex;
