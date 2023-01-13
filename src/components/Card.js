@@ -10,7 +10,6 @@ function Card(prop) {
       src={prop.path}
       alt={prop.name}
       id={htmlId}
-      key={htmlId}
       onClick={(e) => prop.onClick(e.target.alt)}
     />
   );

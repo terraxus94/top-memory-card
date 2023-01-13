@@ -10,17 +10,13 @@ function App() {
   const [score, setScore] = useState(0);
   const [topScore, setTopScore] = useState(0);
 
-  const Shuffle = (array) => {
+  const shuffle = (array) => {
     return array.sort(() => Math.random() - 0.5);
   };
 
   useEffect(() => {
-    setImageOrder(Shuffle(imagesIndexKeys));
+    setImageOrder(shuffle(imagesIndexKeys));
   }, []);
-
-  useEffect(() => {
-    if (score > topScore) setTopScore(score);
-  }, [score]);
 
   const clickHandler = (target) => {
     console.log(clickedImages);
@@ -35,24 +31,25 @@ function App() {
       setClickedImages([target]);
     }
 
-    setScore(score + 1);
+    const newScore = score + 1;
+    setScore(newScore);
 
-    setImageOrder(Shuffle(imagesIndexKeys));
+    if (newScore > topScore) setTopScore(newScore);
+
+    if (newScore === 16) {
+      alert('Congratulations, you have won!');
+      gameRestart(false);
+    }
+
+    setImageOrder(shuffle(imagesIndexKeys));
   };
 
-  const gameRestart = () => {
-    alert('nope, try again');
+  const gameRestart = (gameLost = true) => {
+    if (gameLost) alert('nope, try again');
     setClickedImages([]);
     setScore(0);
-    setImageOrder(Shuffle(imagesIndexKeys));
+    setImageOrder(shuffle(imagesIndexKeys));
   };
-
-  useEffect(() => {
-    if (score === 16) {
-      alert('Congratulations, you have won!');
-      gameRestart();
-    }
-  }, [score]);
 
   return (
     <div className="main-container">
@@ -61,9 +58,14 @@ function App() {
           <p className="text-class">to win click on every image once.</p>
         </div>
         <div className="cards-container">
-          {imageOrder.map((key) => {
+          {imageOrder.map((key, i) => {
             return (
-              <Card name={key} path={imagesIndex[key]} onClick={clickHandler} />
+              <Card
+                name={key}
+                path={imagesIndex[key]}
+                onClick={clickHandler}
+                key={i}
+              />
             );
           })}
         </div>
